@@ -1,0 +1,51 @@
+{
+  "@@locale": "en",
+  "appTitle": "Story App",
+  "login": "Login",
+  "register": "Register",
+  "logout": "Logout",
+  "email": "Email",
+  "password": "Password",
+  "name": "Name",
+  "loginTitle": "Welcome Back",
+  "loginSubtitle": "Sign in to continue sharing your stories",
+  "registerTitle": "Create Account",
+  "registerSubtitle": "Join us and share your learning journey",
+  "noAccount": "Don't have an account? ",
+  "haveAccount": "Already have an account? ",
+  "signIn": "Sign In",
+  "signUp": "Sign Up",
+  "storyList": "Stories",
+  "storyDetail": "Story Detail",
+  "addStory": "New Story",
+  "description": "Description",
+  "descriptionHint": "Tell us about this moment...",
+  "camera": "Camera",
+  "gallery": "Gallery",
+  "upload": "Upload",
+  "uploading": "Uploading...",
+  "loading": "Loading...",
+  "errorOccurred": "Something went wrong",
+  "retry": "Retry",
+  "emptyStories": "No stories yet. Be the first to share!",
+  "logoutConfirm": "Are you sure you want to logout?",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "registerSuccess": "Registration successful! Please login.",
+  "uploadSuccess": "Story uploaded successfully!",
+  "emailRequired": "Email is required",
+  "passwordRequired": "Password is required",
+  "nameRequired": "Name is required",
+  "descriptionRequired": "Description is required",
+  "passwordMinLength": "Password must be at least 8 characters",
+  "selectImage": "Please select an image",
+  "changeLanguage": "Change Language",
+  "postedBy": "Posted by {name}",
+  "@postedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  }
+}

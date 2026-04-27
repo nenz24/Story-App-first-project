@@ -1,0 +1,51 @@
+{
+  "@@locale": "id",
+  "appTitle": "Story App",
+  "login": "Masuk",
+  "register": "Daftar",
+  "logout": "Keluar",
+  "email": "Email",
+  "password": "Kata Sandi",
+  "name": "Nama",
+  "loginTitle": "Selamat Datang",
+  "loginSubtitle": "Masuk untuk berbagi ceritamu",
+  "registerTitle": "Buat Akun",
+  "registerSubtitle": "Bergabung dan bagikan perjalanan belajarmu",
+  "noAccount": "Belum punya akun? ",
+  "haveAccount": "Sudah punya akun? ",
+  "signIn": "Masuk",
+  "signUp": "Daftar",
+  "storyList": "Cerita",
+  "storyDetail": "Detail Cerita",
+  "addStory": "Cerita Baru",
+  "description": "Deskripsi",
+  "descriptionHint": "Ceritakan tentang momen ini...",
+  "camera": "Kamera",
+  "gallery": "Galeri",
+  "upload": "Unggah",
+  "uploading": "Mengunggah...",
+  "loading": "Memuat...",
+  "errorOccurred": "Terjadi kesalahan",
+  "retry": "Coba Lagi",
+  "emptyStories": "Belum ada cerita. Jadilah yang pertama!",
+  "logoutConfirm": "Apakah Anda yakin ingin keluar?",
+  "cancel": "Batal",
+  "confirm": "Konfirmasi",
+  "registerSuccess": "Pendaftaran berhasil! Silakan masuk.",
+  "uploadSuccess": "Cerita berhasil diunggah!",
+  "emailRequired": "Email wajib diisi",
+  "passwordRequired": "Kata sandi wajib diisi",
+  "nameRequired": "Nama wajib diisi",
+  "descriptionRequired": "Deskripsi wajib diisi",
+  "passwordMinLength": "Kata sandi minimal 8 karakter",
+  "selectImage": "Silakan pilih gambar",
+  "changeLanguage": "Ganti Bahasa",
+  "postedBy": "Dikirim oleh {name}",
+  "@postedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  }
+}
