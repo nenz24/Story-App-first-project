@@ -15,11 +15,7 @@ class ApiService {
     final response = await http.post(
       Uri.parse('$_baseUrl/register'),
       headers: {'Content-Type': 'application/json'},
-      body: jsonEncode({
-        'name': name,
-        'email': email,
-        'password': password,
-      }),
+      body: jsonEncode({'name': name, 'email': email, 'password': password}),
     );
 
     final data = jsonDecode(response.body) as Map<String, dynamic>;
@@ -33,10 +29,7 @@ class ApiService {
     final response = await http.post(
       Uri.parse('$_baseUrl/login'),
       headers: {'Content-Type': 'application/json'},
-      body: jsonEncode({
-        'email': email,
-        'password': password,
-      }),
+      body: jsonEncode({'email': email, 'password': password}),
     );
 
     final data = jsonDecode(response.body) as Map<String, dynamic>;
@@ -88,11 +81,7 @@ class ApiService {
       ..headers['Authorization'] = 'Bearer $token'
       ..fields['description'] = description
       ..files.add(
-        http.MultipartFile.fromBytes(
-          'photo',
-          photoBytes,
-          filename: fileName,
-        ),
+        http.MultipartFile.fromBytes('photo', photoBytes, filename: fileName),
       );
 
     final streamedResponse = await request.send();

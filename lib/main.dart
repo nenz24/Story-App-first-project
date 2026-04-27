@@ -101,10 +101,7 @@ class _StoryAppState extends State<StoryApp> {
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
-            supportedLocales: const [
-              Locale('en'),
-              Locale('id'),
-            ],
+            supportedLocales: const [Locale('en'), Locale('id')],
             routerDelegate: _routerDelegate,
             routeInformationParser: _routeInformationParser,
           );

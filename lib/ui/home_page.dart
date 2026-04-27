@@ -7,13 +7,13 @@ import '../provider/localization_provider.dart';
 class HomePage extends StatefulWidget {
   final void Function(String id) onStoryTapped;
   final VoidCallback onAddStory;
-  final VoidCallback onLogout;
+  final VoidCallback onShowLogoutDialog;
 
   const HomePage({
     super.key,
     required this.onStoryTapped,
     required this.onAddStory,
-    required this.onLogout,
+    required this.onShowLogoutDialog,
   });
 
   @override
@@ -25,30 +25,6 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     Future.microtask(() => context.read<StoryProvider>().fetchStories());
-  }
-
-  void _showLogoutDialog() {
-    final localizations = AppLocalizations.of(context)!;
-    showDialog(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: Text(localizations.logout),
-        content: Text(localizations.logoutConfirm),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(ctx),
-            child: Text(localizations.cancel),
-          ),
-          FilledButton(
-            onPressed: () {
-              Navigator.pop(ctx);
-              widget.onLogout();
-            },
-            child: Text(localizations.confirm),
-          ),
-        ],
-      ),
-    );
   }
 
   @override
@@ -82,7 +58,7 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             icon: const Icon(Icons.logout_rounded),
             tooltip: localizations.logout,
-            onPressed: _showLogoutDialog,
+            onPressed: widget.onShowLogoutDialog,
           ),
         ],
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'page_manager.dart';
 import 'route_information_parser.dart';
+import '../l10n/app_localizations.dart';
 import '../provider/auth_provider.dart';
 import '../ui/login_page.dart';
 import '../ui/register_page.dart';
@@ -16,10 +17,8 @@ class StoryRouterDelegate extends RouterDelegate<RouteConfiguration>
   @override
   final GlobalKey<NavigatorState> navigatorKey;
 
-  StoryRouterDelegate({
-    required this.authProvider,
-    required this.pageManager,
-  }) : navigatorKey = GlobalKey<NavigatorState>() {
+  StoryRouterDelegate({required this.authProvider, required this.pageManager})
+    : navigatorKey = GlobalKey<NavigatorState>() {
     authProvider.addListener(notifyListeners);
     pageManager.addListener(notifyListeners);
   }
@@ -55,10 +54,7 @@ class StoryRouterDelegate extends RouterDelegate<RouteConfiguration>
 
     if (authProvider.isLoadingSession) {
       pages.add(
-        const MaterialPage(
-          key: ValueKey('splash'),
-          child: _SplashScreen(),
-        ),
+        const MaterialPage(key: ValueKey('splash'), child: _SplashScreen()),
       );
     } else if (!authProvider.isLoggedIn) {
       pages.add(
@@ -88,10 +84,7 @@ class StoryRouterDelegate extends RouterDelegate<RouteConfiguration>
           child: HomePage(
             onStoryTapped: (id) => pageManager.selectStory(id),
             onAddStory: () => pageManager.openAddStory(),
-            onLogout: () {
-              pageManager.resetAllNavigation();
-              authProvider.logout();
-            },
+            onShowLogoutDialog: () => pageManager.openLogoutDialog(),
           ),
         ),
       );
@@ -119,6 +112,21 @@ class StoryRouterDelegate extends RouterDelegate<RouteConfiguration>
           ),
         );
       }
+
+      if (pageManager.isLogoutDialog) {
+        pages.add(
+          _TransparentPage(
+            key: const ValueKey('logout-dialog'),
+            child: _LogoutDialogPage(
+              onCancel: () => pageManager.closeLogoutDialog(),
+              onConfirm: () {
+                pageManager.resetAllNavigation();
+                authProvider.logout();
+              },
+            ),
+          ),
+        );
+      }
     }
 
     return Navigator(
@@ -129,6 +137,8 @@ class StoryRouterDelegate extends RouterDelegate<RouteConfiguration>
           pageManager.closeRegister();
         } else if (page.key == const ValueKey('add-story')) {
           pageManager.closeAddStory();
+        } else if (page.key == const ValueKey('logout-dialog')) {
+          pageManager.closeLogoutDialog();
         } else if (page.key.toString().contains('detail-')) {
           pageManager.clearSelectedStory();
         }
@@ -147,6 +157,54 @@ class StoryRouterDelegate extends RouterDelegate<RouteConfiguration>
     } else {
       pageManager.resetAllNavigation();
     }
+  }
+}
+
+class _TransparentPage extends Page {
+  final Widget child;
+
+  const _TransparentPage({required this.child, required super.key});
+
+  @override
+  Route createRoute(BuildContext context) {
+    return PageRouteBuilder(
+      settings: this,
+      opaque: false,
+      barrierColor: Colors.black54,
+      barrierDismissible: true,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(opacity: animation, child: child);
+      },
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return child;
+      },
+    );
+  }
+}
+
+class _LogoutDialogPage extends StatelessWidget {
+  final VoidCallback onCancel;
+  final VoidCallback onConfirm;
+
+  const _LogoutDialogPage({required this.onCancel, required this.onConfirm});
+
+  @override
+  Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
+
+    return Center(
+      child: AlertDialog(
+        title: Text(localizations.logout),
+        content: Text(localizations.logoutConfirm),
+        actions: [
+          TextButton(onPressed: onCancel, child: Text(localizations.cancel)),
+          FilledButton(
+            onPressed: onConfirm,
+            child: Text(localizations.confirm),
+          ),
+        ],
+      ),
+    );
   }
 }
 

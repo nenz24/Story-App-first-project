@@ -60,8 +60,7 @@ class RouteConfiguration {
   });
 
   factory RouteConfiguration.home() => RouteConfiguration();
-  factory RouteConfiguration.login() =>
-      RouteConfiguration(isLoginPage: true);
+  factory RouteConfiguration.login() => RouteConfiguration(isLoginPage: true);
   factory RouteConfiguration.register() =>
       RouteConfiguration(isRegisterPage: true);
   factory RouteConfiguration.addStory() =>

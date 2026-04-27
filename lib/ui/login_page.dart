@@ -7,11 +7,7 @@ class LoginPage extends StatefulWidget {
   final VoidCallback onLogin;
   final VoidCallback onRegister;
 
-  const LoginPage({
-    super.key,
-    required this.onLogin,
-    required this.onRegister,
-  });
+  const LoginPage({super.key, required this.onLogin, required this.onRegister});
 
   @override
   State<LoginPage> createState() => _LoginPageState();

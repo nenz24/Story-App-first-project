@@ -212,8 +212,7 @@ class _AddStoryPageState extends State<AddStoryPage> {
               const SizedBox(height: 28),
               Consumer<StoryProvider>(
                 builder: (context, provider, _) {
-                  final isLoading =
-                      provider.uploadState == ResultState.loading;
+                  final isLoading = provider.uploadState == ResultState.loading;
                   return SizedBox(
                     height: 52,
                     child: FilledButton.icon(

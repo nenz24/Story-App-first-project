@@ -19,10 +19,7 @@ class AuthProvider extends ChangeNotifier {
   String? get errorMessage => _errorMessage;
   String? get userName => _userName;
 
-  AuthProvider({
-    required this.apiService,
-    required this.preferencesHelper,
-  }) {
+  AuthProvider({required this.apiService, required this.preferencesHelper}) {
     _loadSession();
   }
 

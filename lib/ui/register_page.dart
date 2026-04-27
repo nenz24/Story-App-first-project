@@ -195,8 +195,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         width: double.infinity,
                         height: 52,
                         child: FilledButton(
-                          onPressed:
-                              auth.isLoading ? null : _handleRegister,
+                          onPressed: auth.isLoading ? null : _handleRegister,
                           style: FilledButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),

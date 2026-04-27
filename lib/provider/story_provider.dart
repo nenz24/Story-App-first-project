@@ -27,10 +27,7 @@ class StoryProvider extends ChangeNotifier {
   String? get errorMessage => _errorMessage;
   String? get uploadMessage => _uploadMessage;
 
-  StoryProvider({
-    required this.apiService,
-    required this.preferencesHelper,
-  });
+  StoryProvider({required this.apiService, required this.preferencesHelper});
 
   Future<void> fetchStories() async {
     _state = ResultState.loading;

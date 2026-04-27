@@ -56,8 +56,11 @@ class _StoryDetailPageState extends State<StoryDetailPage> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(Icons.error_outline_rounded,
-                          size: 64, color: colorScheme.error),
+                      Icon(
+                        Icons.error_outline_rounded,
+                        size: 64,
+                        color: colorScheme.error,
+                      ),
                       const SizedBox(height: 16),
                       Text(
                         provider.errorMessage ?? localizations.errorOccurred,
@@ -94,15 +97,18 @@ class _StoryDetailPageState extends State<StoryDetailPage> {
                           return Container(
                             color: colorScheme.surfaceContainerHighest,
                             child: const Center(
-                                child: CircularProgressIndicator()),
+                              child: CircularProgressIndicator(),
+                            ),
                           );
                         },
                         errorBuilder: (context, error, stackTrace) {
                           return Container(
                             color: colorScheme.surfaceContainerHighest,
-                            child: Icon(Icons.broken_image_rounded,
-                                size: 48,
-                                color: colorScheme.onSurfaceVariant),
+                            child: Icon(
+                              Icons.broken_image_rounded,
+                              size: 48,
+                              color: colorScheme.onSurfaceVariant,
+                            ),
                           );
                         },
                       ),
@@ -142,8 +148,8 @@ class _StoryDetailPageState extends State<StoryDetailPage> {
                                     const SizedBox(height: 2),
                                     Text(
                                       DateFormat.yMMMMd().add_Hm().format(
-                                            story.createdAt.toLocal(),
-                                          ),
+                                        story.createdAt.toLocal(),
+                                      ),
                                       style: textTheme.bodySmall?.copyWith(
                                         color: colorScheme.onSurfaceVariant,
                                       ),
